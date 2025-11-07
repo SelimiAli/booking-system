@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Booking</h1>
+
+        <div class="booking-form">
+            <form action="/update/{{ booking.id }}" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" value="{{ booking.name }}" required>
+                    <input type="date" name="date" value="{{ booking.date }}" required>
+                    <input type="time" name="time" value="{{ booking.time }}" required>
+                    <div class="action-buttons">
+                        <input type="submit" value="Update Booking" class="update-btn">
+                        <a href="/" class="delete-btn" style="text-decoration: none; display: inline-block; text-align: center;">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Management System</h1>
+
+        <div class="booking-form">
+            <h2>New Booking</h2>
+            <form action="/book" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="date" name="date" required>
+                    <input type="time" name="time" required>
+                    <input type="submit" value="Book Now" class="submit-btn">
+                </div>
+            </form>
+        </div>
+
+        <div class="bookings-list">
+            <h2>Current Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.name }}</td>
+                        <td>{{ booking.date }}</td>
+                        <td>{{ booking.time }}</td>
+                        <td class="action-buttons">
+                            <form action="/delete/{{ booking.id }}" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <form action="/update/{{ booking.id }}" method="GET">
+                                <button type="submit" class="update-btn">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
