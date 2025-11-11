@@ -1,0 +1,5 @@
+flask>=3.0.0
+werkzeug>=3.0.0
+mysql-connector-python>=9.0.0
+python-dotenv>=1.0.1   # til miljøvariabler (.env filer)
+flask-session>=0.6.0   # til bedre session-håndtering
