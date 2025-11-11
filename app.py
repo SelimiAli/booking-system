@@ -6,7 +6,7 @@ import mysql.connector
 import os
 
 # Til at .env filen
-load.dotenv()
+load_dotenv()
 
 # Initialiserer Flask applikationen med statiske filer
 app = Flask(__name__, static_url_path='/static')
@@ -15,10 +15,10 @@ app.secret_key = os.urandom(24)
 
 # Konfigurerer databaseforbindelsen til MySQL
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Alarm123.",
-    database="booking_db"
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSWORD'),
+    database='booking_system'
 )
 # Opretter en cursor til at udføre SQL-forespørgsler
 cursor = db.cursor(dictionary=True)
