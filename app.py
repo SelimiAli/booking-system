@@ -10,6 +10,7 @@ load_dotenv()
 
 # Initialiserer Flask applikationen med statiske filer
 app = Flask(__name__, static_url_path='/static')
+
 # Genererer en hemmelig nøgle til sessioner
 app.secret_key = os.urandom(24)
 
